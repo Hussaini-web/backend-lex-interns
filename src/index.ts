@@ -4,6 +4,7 @@ import cors from 'cors';
 import config from './config/config';
 import router from './router/index';
 import morgan from 'morgan';
+import path from 'path';
 
 const app = express();
 
@@ -13,6 +14,7 @@ const customFormat = ':method :url :status :response-time ms - :res[content-leng
 
 // Middleware
 app.use(express.json());
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 app.use(morgan(customFormat));
 app.use(cors());

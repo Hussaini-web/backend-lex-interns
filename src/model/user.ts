@@ -15,6 +15,7 @@ const userSchema = new mongoose.Schema({
     referral : { type: String, required: false },
     courseOfStudy : { type: String, required: true },
     schoolName : { type: String, required: true },
+    userImage : { type: String, required: true },
     programStartDate : { type: Date, required: true },
     programEndDate : { type: Date, required: true },
     status : { type: String, default: "active" },

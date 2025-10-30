@@ -2,10 +2,10 @@
   "name": "ts-learn",
   "version": "1.0.0",
   "main": "index.js",
-"scripts": {
-  "build": "tsc",
-  "start": "npm run build && node dist/index.js"
-},
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node dist/index.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -13,6 +13,7 @@
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
     "@types/jsonwebtoken": "^9.0.10",
+    "@types/multer": "^2.0.0",
     "nodemon": "^3.1.10",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2"
@@ -30,6 +31,7 @@
     "express-oas-generator": "^1.0.48",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.18.1",
-    "morgan": "^1.10.1"
+    "morgan": "^1.10.1",
+    "multer": "^2.0.2"
   }
 }
