@@ -30,4 +30,7 @@ export const getUserByEmail = (email: string) => User.findOne({ email });
 export const createUser = (userData: Record<string, any>) => new User(userData).save().then(user => user.toObject());
 export const updateUser = (id: string, updateData: Record<string, any>) => User.findByIdAndUpdate(id, updateData, { new: true });
 export const deleteUser = (id: string) => User.findByIdAndDelete(id);
+export const getRecentEntries = (limit: number = 5) => {
+    return User.find().sort({ createdAt: -1 }).limit(limit);
+};
 

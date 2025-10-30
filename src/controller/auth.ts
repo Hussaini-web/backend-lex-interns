@@ -69,7 +69,7 @@ if (!isMatch) {
     return ErrorResponse(res, 'Invalid credentials', 401);
 }
 
-const token = GenerateToken(user.id);
+const token = GenerateToken(user.id, user.userRole);
 return SuccessResponse(res, 'Login successful', { token });
 
 }
