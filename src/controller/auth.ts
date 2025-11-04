@@ -8,10 +8,17 @@ export const Register = async (req: express.Request, res: express.Response) => {
      console.log('Register Endpoint hit');
     const { firstName, lastName, email, password, gender, age, state, phoneNumber, userType, skills, courseOfStudy, schoolName, programStartDate, programEndDate } = req.body;
 
-    if (!firstName || !lastName || !email || !password || !gender || !age || !state || !phoneNumber || !userType  || !skills || !courseOfStudy || !schoolName  || !programStartDate || !programEndDate) {
-        return ErrorResponse(res, 'All fields are required', 400);
+ 
+  const allFields = [firstName, lastName, email, password, gender, age, state, phoneNumber, userType, skills, courseOfStudy, schoolName, programStartDate, programEndDate];
+    for (const field of allFields) {  
+      //cheeck if any field is empty string and return error with field name
+      if (typeof field === 'string' && field.trim() === '') {
+          return ErrorResponse(res, 'All fields must be non-empty : ' + field, 400);
+      }else if (field === undefined || field === null) {
+          return ErrorResponse(res, 'All fields are required', 400);
+      }
     }
-
+    
    const Image = req.file?.path;
    if (!Image) {
        return ErrorResponse(res, 'User image is required', 400);
