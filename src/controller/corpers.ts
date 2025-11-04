@@ -37,10 +37,10 @@ export const updatecorper = async (req: express.Request, res: express.Response) 
     try {
         const corper = await getUserById(id);
         if (!corper || corper.userType !== 'corper') {
-            return ErrorResponse(res, 'Corper not found', 404);
+            return ErrorResponse(res, 'Corper not found', 200);
         }
         const updatedcorper = await updateUser(id, updateData);
-        return SuccessResponse(res, 'Corper updated successfully', updatedcorper);
+        return SuccessResponse(res, 'Corper updated successfully', updatedcorper); 
     } catch (error) {
         return ErrorResponse(res, 'Failed to update corper', 500);
     }

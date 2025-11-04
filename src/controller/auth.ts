@@ -9,7 +9,7 @@ export const Register = async (req: express.Request, res: express.Response) => {
     const { firstName, lastName, email, password, gender, age, state, phoneNumber, userType, skills, courseOfStudy, schoolName, programStartDate, programEndDate } = req.body;
 
     if (!firstName || !lastName || !email || !password || !gender || !age || !state || !phoneNumber || !userType  || !skills || !courseOfStudy || !schoolName  || !programStartDate || !programEndDate) {
-        return res.sendStatus(400);
+        return ErrorResponse(res, 'All fields are required', 400);
     }
 
    const Image = req.file?.path;
@@ -70,6 +70,6 @@ if (!isMatch) {
 }
 
 const token = GenerateToken(user.id, user.userRole);
-return SuccessResponse(res, 'Login successful', { token });
+return SuccessResponse(res, 'Login successful', { token, user });
 
 }
