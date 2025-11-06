@@ -5,6 +5,7 @@ import corpers from "./corpers";
 import students from "./students";
 import schedules from "./schedule";
 import dashboard from "./dashboard";
+import attendance from "./attendance";
 
 const router = express.Router();
 
@@ -14,4 +15,5 @@ corpers(router);
 students(router);
 schedules(router);
 dashboard(router);
+attendance(router);
 export default router; // export the actual router, not a function
