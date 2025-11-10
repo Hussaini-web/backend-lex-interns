@@ -69,7 +69,7 @@ export const getAllAttendanceSessions = async (req: Request, res: Response) => {
   if (userRole !== "admin") {
     return ErrorResponse(res, "Unauthorized", 403);
   }
-    const sessions = await AttendanceSession.find().populate("createdBy", "firstName lastName email");
+    const sessions = await AttendanceSession.find().populate("createdBy", "firstName lastName email userImage");
     return SuccessResponse(res, "Attendance sessions retrieved", sessions);
 };
 
@@ -80,6 +80,6 @@ export const getAllAttendanceRecords = async (req: Request, res: Response) => {
   if (userRole !== "admin") {
     return ErrorResponse(res, "Unauthorized", 403);
   }
-    const records = await AttendanceRecord.find().populate("user", "firstName lastName email").populate("session", "token status createdBy expiresAt");
+    const records = await AttendanceRecord.find().populate("user", "firstName lastName email userImage").populate("session", "token status createdBy expiresAt");
     return SuccessResponse(res, "Attendance records retrieved", records);
 };

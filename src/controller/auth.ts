@@ -25,9 +25,11 @@ export const Register = async (req: express.Request, res: express.Response) => {
    }
    console.log('Uploaded image path:', Image);
       let imageUrl = null;
+     /// console.log('Uploaded image path:', req.file.cloudinaryUrl);
     if (req.file) {
-      imageUrl = `${req.protocol}://${req.get('host')}/uploads/images/${req.file.filename}`;
+      imageUrl = req.file.cloudinaryUrl || `${req.protocol}://${req.get('host')}/uploads/images/${req.file.filename}`;
     }
+    console.log('Image URL to be saved:', imageUrl);
     //find existing user 
     const existingUser = await getUserByEmail(email);
     if (existingUser) {
